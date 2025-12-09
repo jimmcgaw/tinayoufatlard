@@ -1,0 +1,41 @@
+services:
+
+  tina-ui:
+    build: tina-ui
+    ports:
+      - "3000:3000"
+    container_name: tina-ui
+    restart: unless-stopped
+    networks:
+      - dynamite
+    depends_on:
+      - api
+  tina-api:
+    build: tina-api
+    container_name: tina-api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    networks:
+      - dynamite
+    depends_on:
+      - tina
+
+  tina: 
+    image: ollama/ollama:latest
+    container_name: tina
+    ports:
+      - "11434:11434"
+    volumes:
+      - tina_data:/data
+    restart: unless-stopped 
+    networks:
+      - dynamite
+
+
+
+volumes:
+  tina_data:
+
+networks:
+  dynamite:

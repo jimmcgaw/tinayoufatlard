@@ -2,4 +2,4 @@
 
 Tina is a llama, and a pet to the Dynamite family.
 
-<img src="./tina.gif">
+<img src="./dynamite-tina.gif">
